@@ -92,7 +92,7 @@ benchmark_summary.csv
 config.json
 ```
 
-The measured quantities for each run are contained by `benchmark_results.json` with individual entries for each framework and each repetition, excluding warm-up runs. Statistically processed results are in the corresponding `benchmarks_summary.csv` file, and the run configuration is saved in `config.json`. Additionally, the `hf_accelerate` framework supports collection of individual token latencies. If the framework is selected, the per-token latencies are added to the `hf_accelerate` entry in `benchmark_results.json` and represent prefill (first token) and decoding (remaining tokens) execution times. They are also processed as a bar graph in an additional `token-timings-hf_accelerate.png` file. Other frameworks don't currently support token timings and don't emit this data.
+The measured quantities for each run are contained by `benchmark_results.json` with individual entries for each framework and each repetition, excluding warm-up runs. Statistically processed results are in the corresponding `benchmarks_summary.csv` file, and the run configuration is saved in `config.json`. Additionally, the `hf_accelerate` framework supports collection of individual token latencies. If the framework is selected and `--token-latencies` is set, the per-token latencies are added to the `hf_accelerate` entry in `benchmark_results.json` and represent prefill (first token) and decoding (remaining tokens) execution times. They are also processed as a bar graph in an additional `token-timings-hf_accelerate.png` file. Other frameworks don't currently support token timings and don't emit this data. Capturing token latencies has been observed to incur a 3% performance overhead.
 
 ## Citation
 
