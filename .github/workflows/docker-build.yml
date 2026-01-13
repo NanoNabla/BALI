@@ -54,6 +54,6 @@ jobs:
           file: docker/Dockerfile-${{ matrix.variant }}
           push: true
           tags: |
-            ghcr.io/nanonabla/bali-inferbench:${{ matrix.variant }}
+            ghcr.io/${{ toLower(github.repository_owner) }}/bali-inferbench:${{ matrix.variant }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
