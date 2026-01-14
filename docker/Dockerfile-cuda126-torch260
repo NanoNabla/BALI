@@ -21,14 +21,16 @@ RUN apt-get update && apt-get install -y \
 # Make python3.12 default
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1
 
-ENV ENV PIP_BREAK_SYSTEM_PACKAGES=1
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 # ---- Environment layout (matches your script) ----
 ENV BALI_REPO=/opt/bali
 WORKDIR ${BALI_REPO}
-COPY ../ ${BALI_REPO}
+COPY ../../ ${BALI_REPO}
 RUN pwd
 RUN ls -al ${BALI_REPO}
+RUN ls -al ../
+RUN ls -al ../../
 
 ENV BALI_CACHE_REPO=/opt/bali
 
