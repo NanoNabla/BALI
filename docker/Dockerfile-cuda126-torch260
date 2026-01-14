@@ -21,17 +21,19 @@ RUN apt-get update && apt-get install -y \
 # Make python3.12 default
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1
 
+ENV ENV PIP_BREAK_SYSTEM_PACKAGES=1
+
 # ---- Environment layout (matches your script) ----
 ENV BALI_REPO=/opt/bali
 WORKDIR ${BALI_REPO}
 COPY ../ ${BALI_REPO}
 RUN pwd
-RUN ls -al
+RUN ls -al ${BALI_REPO}
 
 ENV BALI_CACHE_REPO=/opt/bali
 
 ENV XDG_CACHE_HOME=${BALI_CACHE_REPO}/.cache
-ENV TRITON_CACHE_DIR=${BALI_BALI_CACHE_REPOREPO}/.triton
+ENV TRITON_CACHE_DIR=${BALI_CACHE_REPOREPO}/.triton
 ENV BENTOML_HOME=${BALI_CACHE_REPO}/.bentoml
 ENV HF_HOME=${BALI_CACHE_REPO}/.huggingface
 
@@ -39,7 +41,7 @@ ENV HF_HOME=${BALI_CACHE_REPO}/.huggingface
 # ENV HF_TOKEN=...
 
 # ---- Python tooling ----
-RUN python -m pip install --upgrade pip setuptools wheel
+#RUN python -m pip install --upgrade pip setuptools wheel
 
 # ---- PyTorch (CUDA 12.6) ----
 RUN pip install \
