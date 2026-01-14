@@ -44,7 +44,7 @@ ENV HF_HOME=${BALI_CACHE_REPO}/.huggingface
 # ENV HF_TOKEN=...
 
 # ---- Python tooling ----
-RUN python -m pip install --upgrade pip setuptools wheel
+RUN python -m pip install --upgrade setuptools wheel
 
 # ---- PyTorch (CUDA 12.6) ----
 RUN pip install --no-cache-dir \
