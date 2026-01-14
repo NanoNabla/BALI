@@ -24,7 +24,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1
 # ---- Environment layout (matches your script) ----
 ENV BALI_REPO=/opt/bali
 WORKDIR ${BALI_REPO}
-COPY . ${BALI_REPO}
+COPY ../ ${BALI_REPO}
 RUN pwd
 RUN ls -al
 
