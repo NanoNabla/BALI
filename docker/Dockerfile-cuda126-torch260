@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1
 
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
+ENV PIP_NO_CACHE_DIR=1
 
 # ---- Environment layout (matches your script) ----
 ENV BALI_REPO=/opt/bali
@@ -43,14 +44,14 @@ ENV HF_HOME=${BALI_CACHE_REPO}/.huggingface
 # ENV HF_TOKEN=...
 
 # ---- Python tooling ----
-#RUN python -m pip install --upgrade pip setuptools wheel
+RUN python -m pip install --upgrade pip setuptools wheel
 
 # ---- PyTorch (CUDA 12.6) ----
-RUN pip install \
+RUN pip install --no-cache-dir \
     torch==2.6.0
 
 # ---- Core ML dependencies ----
-RUN pip install \
+RUN pip install  \
     numpy==1.26.4 \
     transformers==4.50.3 \
     sentencepiece==0.2.0 \

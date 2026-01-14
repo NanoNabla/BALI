@@ -55,5 +55,5 @@ jobs:
           push: true
           tags: |
             ghcr.io/nanonabla/bali-inferbench:${{ matrix.variant }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+#          cache-from: type=gha
+#          cache-to: type=gha,mode=max
