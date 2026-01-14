@@ -24,7 +24,9 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1
 # ---- Environment layout (matches your script) ----
 ENV BALI_REPO=/opt/bali
 WORKDIR ${BALI_REPO}
-COPY ../../ .  # relative path from Dockerfile to repo root
+COPY . ${BALI_REPO}
+RUN pwd
+RUN ls -al
 
 ENV BALI_CACHE_REPO=/opt/bali
 
